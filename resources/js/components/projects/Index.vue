@@ -10,21 +10,15 @@
 
 <script>
 
+import useProjects from "../../composables/projects.js";
+import {onMounted} from "vue";
+
 export default {
-    data() {
-        return {
-            projects: []
-        }
-    },
-    mounted() {
-      this.fetchProjects()
-    },
-    methods: {
-        fetchProjects() {
-            axios.get('api/projects')
-                .then(response => this.projects = response.data)
-                .catch(error => console.log(error))
-        }
+    setup() {
+        const { projects, getProjects } = useProjects()
+        onMounted(getProjects)
+
+        return { projects }
     }
 }
 
