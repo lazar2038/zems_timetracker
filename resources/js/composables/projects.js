@@ -7,7 +7,7 @@ export default function useProjects() {
     const getProjects = async() => {
         axios.get('/api/projects')
             .then(response => {
-                projects.value = response.data;
+                projects.value = response.data.data;
             })
             .catch(error => console.log(error))
     }
