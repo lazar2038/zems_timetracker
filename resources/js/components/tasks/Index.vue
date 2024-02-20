@@ -4,6 +4,7 @@
         <li v-for="task in tasks" class="my-3">
             <div class="font-normal">Проект {{ task.project.title }}</div>
             <div class="font-bold">Задача: {{ task.title }}</div>
+            <div>Потрачено: {{ task.durationString }}</div>
             <ul class="ml-2">
                 <li v-for="timeline in task.timelines">
                     Исполнитель: {{ timeline.user.name }}, Начало: {{ timeline.date_start }} {{ timeline.time_start }}, Окончание: {{ timeline.date_end }} {{ timeline.time_end }}

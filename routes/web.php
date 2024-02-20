@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function() {
-    return 1;
+    $project = \App\Models\Project::find(1);
+    return $project->durationInSeconds;
 });
 
 Route::view('/{any?}', 'any')
