@@ -10,3 +10,12 @@ h2 {
 section {
     @apply mb-10
 }
+
+
+.button {
+    @apply inline-block text-white  font-bold py-2 my-2 px-4 rounded;
+}
+
+.button.green {
+    @apply bg-green-600 hover:bg-green-700 transition-all;
+}

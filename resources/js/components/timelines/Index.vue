@@ -10,19 +10,11 @@
 
 </template>
 
-<script>
+<script setup>
 
-import useTimelines from "../../composables/timelines.js";
-import {onMounted} from "vue";
-
-export default {
-    setup() {
-        const { timelines, getTimelines } = useTimelines()
-        onMounted(getTimelines)
-
-        return { timelines }
-    }
-}
+    import useTimelines from "../../composables/timelines.js";
+    const { timelines, getTimelines } = useTimelines()
+    getTimelines()
 
 </script>
 

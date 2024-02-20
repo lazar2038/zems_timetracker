@@ -12,6 +12,19 @@ export default function useProjects() {
             .catch(error => console.log(error))
     }
 
-    return { projects, getProjects }
+    const actionButtons = {
+        'addButton':
+            {
+                'classes':
+                    'button green',
+                'route':
+                    'projects.create',
+                'icon':
+                    ['fas', 'plus']
+            }
+    }
+
+
+    return { projects, getProjects, actionButtons }
 
 }

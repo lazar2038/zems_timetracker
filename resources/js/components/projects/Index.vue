@@ -1,7 +1,13 @@
 <template>
 
+    <router-link :to=" { name : actionButtons.addButton.route } " :class="actionButtons.addButton.classes">
+        <font-awesome-icon :icon="actionButtons.addButton.icon" />
+    </router-link>
+
+
+
     <ul>
-        <li v-for="project in projects" class="mb-3 border-b-2 py-4">
+        <li v-for="project in projects" class="mb-3 border-b-2 pb-4">
             <div>
                 <span class="font-normal">Проект #{{ project.id }}</span> <span class="font-bold">{{ project.title }}</span>
             </div>
@@ -15,19 +21,17 @@
 
 </template>
 
-<script>
+<script setup>
 
-import useProjects from "../../composables/projects.js";
-import {onMounted} from "vue";
+    import useProjects from "../../composables/projects.js"
 
-export default {
-    setup() {
-        const { projects, getProjects } = useProjects()
-        onMounted(getProjects)
+    const { projects, getProjects, actionButtons } = useProjects()
 
-        return { projects }
-    }
-}
+
+
+
+
+    getProjects()
 
 </script>
 

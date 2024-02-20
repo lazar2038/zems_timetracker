@@ -25,19 +25,11 @@
     </section>
 </template>
 
-<script>
+<script setup>
 
-import useTasks from "../../composables/tasks.js";
-import {onMounted} from "vue";
-
-export default {
-    setup() {
-        const { tasks, getTasks } = useTasks()
-        onMounted(getTasks)
-
-        return { tasks }
-    }
-}
+    import useTasks from "../../composables/tasks.js";
+    const { tasks, getTasks } = useTasks()
+    getTasks()
 
 </script>
 
