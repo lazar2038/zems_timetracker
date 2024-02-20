@@ -8,7 +8,6 @@
             <div>Общее затраченное время: {{ project.durationString }}</div>
             <ul class="ml-3">
                 <li v-for="task in project.tasks" class="my-3 border-l-2 border-green-500 pl-2">Задача: <span class="font-italic">{{ task.title }}</span>
-                    <div>Исполнитель: {{ task.user.name }}</div>
                 </li>
             </ul>
         </li>

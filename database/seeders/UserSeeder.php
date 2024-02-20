@@ -1,18 +1,23 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Seeders;
 
-return new class extends Migration
+use App\Models\Project;
+use App\Models\Task;
+use App\Models\Timeline;
+use App\Models\User;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
 {
     /**
-     * Run the migrations.
+     * Run the database seeds.
      */
-    public function up(): void
+    public function run(): void
     {
+
         User::create([
             'name' => 'admin',
             'email' => 'k.kochnov@gmail.com',
@@ -21,13 +26,6 @@ return new class extends Migration
             'remember_token' => null,
         ]);
         User::factory(2)->create();
-    }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        User::truncate();
     }
-};
+}

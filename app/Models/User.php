@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     /**
      * The attributes that are mass assignable.
@@ -46,7 +47,16 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);
+        return $this->hasManyThrough(Task::class, Project::class);
+    }
+
+    public function projects() {
+        return $this->hasMany(Project::class);
+    }
+
+    public function timelines()
+    {
+        return $this->hasManyDeep(Timeline::class, [Project::class, Task::class]);
     }
 
 }

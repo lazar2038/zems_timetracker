@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Timeline extends Model
 {
     use HasFactory;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
+
+
     protected $guarded = [];
 
     public function task()
@@ -15,9 +18,14 @@ class Timeline extends Model
         return $this->belongsTo(Task::class);
     }
 
+    public function project()
+    {
+        return $this->belongsToThrough(Project::class, Task::class);
+    }
+
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToThrough(User::class, [Project::class, Task::class]);
     }
 
 }

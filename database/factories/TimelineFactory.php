@@ -34,7 +34,6 @@ class TimelineFactory extends Factory
             'date_end' => $date_end,
             'time_start' => $time_start,
             'time_end' => $time_end,
-            'user_id' => User::factory()
         ];
     }
 }

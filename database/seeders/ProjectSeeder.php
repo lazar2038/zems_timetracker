@@ -21,12 +21,9 @@ class ProjectSeeder extends Seeder
         Project::factory(2)
             ->has(
                 Task::factory(3)
-                    ->has(Timeline::factory()
-                        ->state(function(array $attributes, Task $task) {
-                            return ['user_id' => $task->user_id];
-                        })
-                        ->count(5)
-
+                    ->has(
+                        Timeline::factory()
+                            ->count(5)
                     )
             )->create();
     }

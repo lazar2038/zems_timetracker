@@ -13,6 +13,7 @@ class Task extends Model
 {
     use HasFactory;
     use HasDurationString;
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $guarded = [];
 
@@ -29,7 +30,7 @@ class Task extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToThrough(User::class, Project::class);
     }
 
 

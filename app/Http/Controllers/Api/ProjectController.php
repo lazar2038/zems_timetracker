@@ -11,7 +11,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('tasks', 'tasks.user', 'tasks.timelines.user')->get();
+        $projects = Project::with('tasks', 'user', 'timelines')->get();
         return ProjectResource::collection($projects);
     }
 }

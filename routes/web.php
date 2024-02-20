@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function() {
-    $project = \App\Models\Project::find(1);
-    return $project->durationInSeconds;
+    $timeline = \App\Models\Timeline::find(1);
+    return $timeline->user;
 });
 
 Route::view('/{any?}', 'any')

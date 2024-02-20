@@ -11,7 +11,7 @@ class TimelineController extends Controller
 {
     public function index()
     {
-        $timelines = Timeline::with('user', 'task')->orderBy('timestamp_start')->get();
+        $timelines = Timeline::with('user', 'task', 'project')->orderBy('timestamp_start')->get();
         return TimelineResource::collection($timelines);
     }
 }

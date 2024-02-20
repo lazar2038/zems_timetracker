@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('task_id')->constrained();
-            $table->foreignId('user_id')->nullable()->constrained();
 
             $table->bigInteger('timestamp_start')->nullable();
             $table->bigInteger('timestamp_end')->nullable();
