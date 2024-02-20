@@ -19,3 +19,8 @@ section {
 .button.green {
     @apply bg-green-600 hover:bg-green-700 transition-all;
 }
+
+
+.button.yellow {
+    @apply bg-yellow-500 hover:bg-yellow-600 transition-all;
+}

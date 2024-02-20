@@ -21,6 +21,15 @@ export default function useProjects() {
                     'projects.create',
                 'icon':
                     ['fas', 'plus']
+            },
+        'editButton':
+            {
+                'classes':
+                    'button yellow',
+                'route':
+                    'projects.create',
+                'icon':
+                    ['fas', 'pen']
             }
     }
 
