@@ -2,7 +2,7 @@
 
     <ul>
         <li v-for="timeline in timelines">
-            User: {{ timeline.user_id }}, Date time start: {{ timeline.date_start }} {{ timeline.time_start }}
+            Исполнитель: {{ timeline.user.name }}, Начало: {{ timeline.date_start }} {{ timeline.time_start }}, Окончание: {{ timeline.date_end }} {{ timeline.time_end }}
         </li>
     </ul>
 

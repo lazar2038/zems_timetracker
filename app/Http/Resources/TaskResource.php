@@ -17,7 +17,10 @@ class TaskResource extends JsonResource
         return [
             'title' => $this->title,
             'description' => $this->description,
-            'user_id' => $this->user_id
+            'user' => new UserResource($this->whenLoaded('user')),
+            'project' => new ProjectResource($this->whenLoaded('project')),
+            'timelines' => TimelineResource::collection($this->whenLoaded('timelines')),
+
         ];
     }
 }

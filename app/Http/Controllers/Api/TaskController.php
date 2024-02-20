@@ -11,6 +11,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return TaskResource::collection(Task::all());
+        $tasks = Task::with('project', 'timelines.user', 'user')->get();
+        return TaskResource::collection($tasks);
     }
 }
