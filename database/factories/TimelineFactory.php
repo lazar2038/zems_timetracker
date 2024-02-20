@@ -18,17 +18,14 @@ class TimelineFactory extends Factory
      */
     public function definition(): array
     {
-        $datetime_end = Carbon::now()->subSeconds(rand(1, 60*60*24*15));//окончание таймлайна от 0 до 15 дней от текущего момента
-        $datetime_start = $datetime_end->subSeconds(rand(1, 60*60*8));//начало таймлайна ещё от 0 до 8 часов от окончания
-
-        $time_start = Carbon::createFromTimestamp($datetime_start)->toTimeString();
-        $time_end = Carbon::createFromTimestamp($datetime_end)->toTimeString();
-        $date_start = Carbon::createFromTimestamp($datetime_start)->toDateString();
-        $date_end = Carbon::createFromTimestamp($datetime_end)->toDateString();
+        $datetime_end = \Carbon\Carbon::now()->subSeconds(rand(1, 60*60*24*15));//окончание таймлайна от 0 до 15 дней от текущего момента
+        $datetime_start = $datetime_end->copy()->subSeconds(rand(1, 60*60*8));//начало таймлайна ещё от 0 до 8 часов от окончания
+        $time_start = $datetime_start->toTimeString();
+        $time_end = $datetime_end->toTimeString();
+        $date_start = $datetime_start->toDateString();
+        $date_end = $datetime_end->toDateString();
         $timestamp_start = $datetime_start->timestamp;
         $timestamp_end = $datetime_end->timestamp;
-
-
 
         return [
             'timestamp_start' => $timestamp_start,

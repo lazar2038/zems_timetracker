@@ -20,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('projects', [\App\Http\Controllers\Api\ProjectController::class, 'index']);
+Route::get('tasks', [\App\Http\Controllers\Api\TaskController::class, 'index']);
+Route::get('timelines', [\App\Http\Controllers\Api\TimelineController::class, 'index']);
 

@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function() {
+    return 1;
+});
+
 Route::view('/{any?}', 'any')
     ->name('any')
     ->where('any', '.*');
