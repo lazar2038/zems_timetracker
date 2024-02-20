@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->longText('content')->nullable();
-            $table->timestamps();
-        });
+        \Illuminate\Support\Facades\Artisan::call('db:seed', [
+            '--class' => 'DatabaseSeeder',
+        ]);
     }
 
     /**
@@ -24,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        //
     }
 };

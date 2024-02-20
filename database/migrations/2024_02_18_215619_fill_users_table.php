@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('projects', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->timestamps();
-        });
-
+        User::create([
+            'name' => 'admin',
+            'email' => 'k.kochnov@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'remember_token' => null,
+        ]);
+        User::factory(2)->create();
     }
 
     /**
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        User::truncate();
     }
 };
