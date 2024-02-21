@@ -10,7 +10,3 @@
 
     let name = "Create"
 </script>
-
-<style scoped>
-
-</style>

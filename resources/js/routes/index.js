@@ -132,9 +132,14 @@ const routes = [
     },
 ]
 
+const breadcrumbs = {
+    'projects.index' : ['main', 'projects.index']
+};
+
 export default createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    breadcrumbs
 })
 
 

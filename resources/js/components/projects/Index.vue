@@ -27,7 +27,3 @@
     getProjects()
 
 </script>
-
-<style scoped>
-
-</style>
