@@ -30,7 +30,7 @@ import breadcrumbs from "../routes/breadcrumbs";
 
 const route = useRoute()
 const props = defineProps({
-    ['route']: Array,
+    ['route']: Object,
 });
 
 </script>

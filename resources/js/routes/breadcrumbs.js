@@ -10,7 +10,6 @@ const breadcrumbs = {
     'tasks.edit' : [ {'route' : 'main', title: 'Главная'} , {'route' : 'tasks.index', 'title' : "Задачи"}, {'title' : "Редактирование задачи"}],
     'tasks.delete' : [ {'route' : 'main', title: 'Главная'} , {'route' : 'tasks.index', 'title' : "Задачи"}, {'title' : "Удаление задачи"}],
     'timelines.index' : [ {'route' : 'main', title: 'Главная'} , {'title' : "Тамлайны"}]
-
 };
 
 export default breadcrumbs;
