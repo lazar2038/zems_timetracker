@@ -42,3 +42,12 @@ main .button {
 main a {
     @apply underline;
 }
+
+
+.breadcrumbs {
+    @apply text-xs mt-2;
+}
+
+.breadcrumbs a {
+    @apply underline hover:text-gray-800 text-gray-500;
+}
