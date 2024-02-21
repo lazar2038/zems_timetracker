@@ -1,9 +1,5 @@
 <template>
 
-    <router-link :to=" { name : actionButtons.editButton.route } " :class="actionButtons.editButton.classes">
-        <font-awesome-icon :icon="actionButtons.editButton.icon" />
-    </router-link>
-
     <ul>
         <li v-for="project in projects" class="mb-3 border-b-2 pb-4">
             <div>

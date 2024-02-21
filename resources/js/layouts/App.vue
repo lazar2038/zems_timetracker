@@ -56,17 +56,16 @@
         <!-- Page Heading -->
         <header class="shadow">
             <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 overflow-hidden">
+
+
+
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center space-x-2">
 
                     <div>{{ currentPagetitle }}</div>
 
-                    <div v-for="(info, action) in route.meta.actionButtons" class="">
-
-                        <router-link :to=" { name : info.route } " :class="info.classes">
-                            <font-awesome-icon :icon="info.icon" /> {{ info.text }}
-                        </router-link>
-
-                    </div>
+                    <CreateButton :route="route"></CreateButton>
+                    <EditButton :route="route" :id="route.params.id"></EditButton>
+                    <DeleteButton :route="route"></DeleteButton>
 
 
                 </h2>
@@ -102,14 +101,21 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { inject } from "vue";
 
+import CreateButton from "../components/action_buttons/CreateButton.vue";
+import EditButton from "../components/action_buttons/EditButton.vue";
+import DeleteButton from "../components/action_buttons/DeleteButton.vue";
+
 const route = useRoute()
 const router = inject('router')
 
 
 const currentPagetitle = computed(() => {
-    return route.meta.title;
+    if (route.meta.title) {
+        return route.meta.title;
+    }
+    else {
+        return 'Дефолтный заголовок';
+    }
 })
-
-
 
 </script>
