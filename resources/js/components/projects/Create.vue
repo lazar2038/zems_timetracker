@@ -1,8 +1,8 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="storeProject(project)">
 
         <div>
-            <input type="text" id="title" placeholder="Название проекта" >
+            <input v-model="project.title" type="text" id="title" placeholder="Название проекта" >
         </div>
 
         <div>
@@ -13,8 +13,12 @@
 </template>
 
 <script setup>
-    let name = "Create"
-    function submit() {
-            console.log('Submitted')
-    }
+
+    import { reactive } from "vue";
+    import useProjects from "../../composables/projects.js";
+    const { storeProject } = useProjects();
+    const project = reactive({
+        title : ''
+    })
+
 </script>

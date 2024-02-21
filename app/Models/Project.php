@@ -8,6 +8,7 @@ use App\Traits\HasDurationString;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
 
 class Project extends Model
 {
@@ -15,7 +16,6 @@ class Project extends Model
     use HasDurationString;
 
     protected $guarded = [];
-
 
     public function user()
     {
@@ -37,6 +37,12 @@ class Project extends Model
     {
         return ProjectService::getDurationInSeconds($this);
     }
+
+
+
+
+
+
 
 
 }
