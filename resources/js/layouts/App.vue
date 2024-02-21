@@ -59,7 +59,7 @@
 
             <Breadcrumbs :route="route"></Breadcrumbs>
 
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight flex items-center space-x-2">
+                <h1 class="flex items-center space-x-2">
 
                     <div>{{ currentPagetitle }}</div>
 
@@ -68,7 +68,7 @@
                     <DeleteButton :route="route"></DeleteButton>
 
 
-                </h2>
+                </h1>
             </div>
         </header>
 
@@ -113,7 +113,13 @@ const route = useRoute()
 
 const currentPagetitle = computed(() => {
     if (route.meta.title) {
-        return route.meta.title;
+
+        let title = route.meta.title;
+        if(route.params.id) {
+            title += ' #' + route.params.id;
+        }
+
+        return title;
     }
     else {
         return 'Дефолтный заголовок';

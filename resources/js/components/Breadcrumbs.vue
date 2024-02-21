@@ -5,14 +5,14 @@
             <span v-for="(crumb,index) in breadcrumbs[route.name]">
                 <li v-if="index !== breadcrumbs[route.name].length - 1" class="pr-2">
                     <router-link :to="{ name: crumb.route }">
-                        {{  crumb.title }}
+                        {{  crumb.title }} <span v-if="crumb.id">{{ route.params.id }}</span>
                     </router-link>
                     <span class="ml-2 text-gray-500 select-none">&rsaquo;</span>
 
                 </li>
 
                 <span v-if="index == breadcrumbs[route.name].length - 1">
-                        {{  crumb.title }}
+                        {{  crumb.title }} <span v-if="crumb.id">{{ route.params.id }}</span>
                 </span>
 
             </span>

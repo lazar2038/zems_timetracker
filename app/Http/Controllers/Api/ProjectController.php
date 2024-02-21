@@ -17,6 +17,12 @@ class ProjectController extends Controller
         return ProjectResource::collection($projects);
     }
 
+    public function show(Project $project)
+    {
+        $project->load('tasks');
+        return new ProjectResource($project);
+    }
+
     public function store(StoreProjectRequest $request)
     {
 

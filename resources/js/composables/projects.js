@@ -1,15 +1,26 @@
-import { ref } from 'vue'
+import {reactive, ref} from 'vue'
 import { useRouter } from "vue-router";
 
 export default function useProjects() {
 
-    const projects = ref([])
+    const projects = ref({})
+    const project = ref({})
+
     const router = useRouter()
 
     const getProjects = async() => {
         axios.get('/api/projects')
             .then(response => {
                 projects.value = response.data.data;
+            })
+            .catch(error => console.log(error))
+    }
+
+    const getProject = async(id) => {
+        axios.get('/api/projects/' + id)
+            .then(response => {
+                project.value = response.data.data;
+                console.log(project.value)
             })
             .catch(error => console.log(error))
     }
@@ -44,6 +55,6 @@ export default function useProjects() {
     }
 
 
-    return { projects, getProjects, storeProject, actionButtons }
+    return { projects, project, getProjects, getProject, storeProject, actionButtons }
 
 }

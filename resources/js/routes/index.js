@@ -55,7 +55,7 @@ const routes = [
         path : '/projects/:id',
         name : 'projects.show',
         meta : {
-            title : 'test',
+            title : 'Страница проекта',
             actionButtons : {
                 edit : {
                     route : 'projects.edit',

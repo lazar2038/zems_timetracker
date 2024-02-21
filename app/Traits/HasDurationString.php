@@ -5,7 +5,7 @@ use App\Services\TimeService;
 
 trait HasDurationString
 {
-    public function getDurationStringAttribute()
+    public function getDurationStringAttribute(): string
     {
         return TimeService::getDurationString($this->durationInSeconds);
     }
