@@ -1,5 +1,5 @@
 import './bootstrap';
-import { createApp } from 'vue'
+import { createApp, provide } from 'vue'
 import App from './layouts/App.vue'
 import router from './routes/index.js'
 
@@ -15,4 +15,6 @@ const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
+app.provide('router', router)
+
 app.mount('#app')

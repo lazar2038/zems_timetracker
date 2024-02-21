@@ -1,9 +1,5 @@
 <template>
 
-    <router-link :to=" { name : actionButtons.addButton.route } " :class="actionButtons.addButton.classes">
-        <font-awesome-icon :icon="actionButtons.addButton.icon" />
-    </router-link>
-
     <router-link :to=" { name : actionButtons.editButton.route } " :class="actionButtons.editButton.classes">
         <font-awesome-icon :icon="actionButtons.editButton.icon" />
     </router-link>
@@ -11,7 +7,10 @@
     <ul>
         <li v-for="project in projects" class="mb-3 border-b-2 pb-4">
             <div>
-                <span class="font-normal">Проект #{{ project.id }}</span> <span class="font-bold">{{ project.title }}</span>
+               <router-link :to=" { name : 'projects.show', params : { id : project.id } } ">
+                   Проект #{{ project.id }} <span class="font-bold">{{ project.title }}</span>
+                </router-link>
+
             </div>
             <div>Общее затраченное время: {{ project.durationString }}</div>
             <ul class="ml-3">
@@ -28,10 +27,6 @@
     import useProjects from "../../composables/projects.js"
 
     const { projects, getProjects, actionButtons } = useProjects()
-
-
-
-
 
     getProjects()
 

@@ -1,6 +1,8 @@
 import DashboardIndex from "../components/dashboard/Index.vue"
 import ProjectsIndex from "../components/projects/Index.vue"
 import ProjectsCreate from "../components/projects/Create.vue"
+import ProjectsShow from "../components/projects/Show.vue"
+
 import TasksIndex from "../components/tasks/Index.vue"
 import TasksCreate from "../components/tasks/Create.vue"
 import TimelinesIndex from "../components/timelines/Index.vue"
@@ -24,7 +26,18 @@ const routes = [
         'name' : 'projects.index',
         'meta' : {
             'title' : 'Проекты',
+            'actionButtons' : {
+                'create' : {
+                    'route' : 'projects.create',
+                    'classes':
+                        'button green',
+                    'icon':
+                        ['fas', 'plus'],
+                    'text': 'Добавить'
+                }
+            },
         },
+
         component: ProjectsIndex
     },
     {
@@ -35,12 +48,31 @@ const routes = [
         },
         component: ProjectsCreate
     },
+    {
+        'path' : '/projects/:id',
+        'name' : 'projects.show',
+        'meta' : {
+            'title' : 'Проекты.',
+            'actionButtons' : {
+                'edit' : {
+                    'route' : 'projects.create',
+                    'classes':
+                        'button yellow',
+                    'icon':
+                        ['fas', 'plus'],
+                    'text': 'Изменить'
+                }
+            },
+        },
+        component: ProjectsShow
+    },
 
     {
         'path' : '/tasks',
         'name' : 'tasks.index',
         'meta' : {
             'title' : 'Задачи',
+
         },
         component: TasksIndex
     },
@@ -70,7 +102,6 @@ const routes = [
         component: TimelinesCreate
     },
 ]
-
 
 export default createRouter({
     history: createWebHistory(),
