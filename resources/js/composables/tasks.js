@@ -12,6 +12,15 @@ export default function useTasks() {
             .catch(error => console.log(error))
     }
 
-    return { tasks, getTasks }
+    const storeTask = async(task) => {
+        axios.post('/api/tasks', task)
+            .then(response => {
+                console.log(response)
+                //router.push({ name: 'tasks.index'})
+            })
+            .catch(error => console.log(error))
+    }
+
+    return { tasks, getTasks, storeTask }
 
 }
