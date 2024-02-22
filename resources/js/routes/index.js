@@ -1,4 +1,5 @@
 import DashboardIndex from "../components/dashboard/Index.vue"
+
 import ProjectsIndex from "../components/projects/Index.vue"
 import ProjectsCreate from "../components/projects/Create.vue"
 import ProjectsShow from "../components/projects/Show.vue"
@@ -8,6 +9,11 @@ import ProjectsEdit from "../components/projects/Edit.vue"
 
 import TasksIndex from "../components/tasks/Index.vue"
 import TasksCreate from "../components/tasks/Create.vue"
+import TasksShow from "../components/tasks/Show.vue"
+import TasksDelete from "../components/tasks/Delete.vue"
+import TasksEdit from "../components/tasks/Edit.vue"
+
+
 import TimelinesIndex from "../components/timelines/Index.vue"
 import TimelinesCreate from "../components/timelines/Create.vue"
 
@@ -24,6 +30,7 @@ const routes = [
         },
         component: DashboardIndex
     },
+
     {
         path : '/projects',
         name : 'projects.index',
@@ -43,6 +50,7 @@ const routes = [
 
         component: ProjectsIndex
     },
+
     {
         path : '/projects/create',
         name : 'projects.create',
@@ -51,6 +59,7 @@ const routes = [
         },
         component: ProjectsCreate
     },
+
     {
         path : '/projects/:id',
         name : 'projects.show',
@@ -97,21 +106,75 @@ const routes = [
     },
 
     {
-        'path' : '/tasks',
-        'name' : 'tasks.index',
-        'meta' : {
-            'title' : 'Задачи',
-
+        path : '/tasks',
+        name : 'tasks.index',
+        meta : {
+            title : 'Задачи',
+            actionButtons : {
+                create : {
+                    route : 'tasks.create',
+                    classes:
+                        'button green',
+                    icon:
+                        ['fas', 'plus'],
+                    text: 'Добавить'
+                }
+            },
         },
         component: TasksIndex
     },
     {
-        'path' : '/tasks/create',
-        'name' : 'tasks.create',
-        'meta' : {
-            'title' : 'Задачи. Создание.',
+        path : '/tasks/create',
+        name : 'tasks.create',
+        meta : {
+            title : 'Задачи. Создание.',
         },
         component: TasksCreate
+    },
+
+    {
+        path : '/tasks/:id',
+        name : 'tasks.show',
+        meta : {
+            title : 'Страница задание',
+            actionButtons : {
+                edit : {
+                    route : 'tasks.edit',
+                    classes:
+                        'button yellow',
+                    icon:
+                        ['fas', 'pen'],
+                    text: 'Изменить'
+                },
+                delete : {
+                    route : 'tasks.delete',
+                    classes:
+                        'button red',
+                    icon:
+                        ['fas', 'trash'],
+                    text: 'Удалить проект'
+                }
+            },
+        },
+        component: TasksShow
+    },
+
+    {
+        path : '/tasks/:id/edit',
+        name : 'tasks.edit',
+        meta : {
+            title : 'Изменение деталей задания',
+        },
+        component: TasksEdit
+    },
+
+    {
+        path : '/tasks/:id/delete',
+        name : 'tasks.delete',
+        meta : {
+            title : 'Удалить задание'
+        },
+        component: TasksDelete
     },
 
     {

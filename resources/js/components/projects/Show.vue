@@ -2,8 +2,17 @@
 
     <div>Общее затраченное время: {{ project.durationString }}</div>
 
-    <h2>Список задач по проекту</h2>
-    <ul class="ml-3">
+    <h2>Список задач по проекту   <router-link :to="{'name' : 'tasks.create', 'query' : {'project' : project.id}}" class="button green">
+        Добавить задачу
+    </router-link></h2>
+
+
+
+
+
+    <div v-if="project.tasks.length == 0">Задач по проекту нет</div>
+
+    <ul v-else class="ml-3">
         <li v-for="task in project.tasks" class="my-3 border-l-2 border-green-500 pl-2">Задача: <span class="font-italic">{{ task.title }}</span>
         </li>
     </ul>

@@ -2,7 +2,7 @@
     <form @submit.prevent="submit">
 
         <div>
-            <input type="text" id="title" placeholder="Название проекта" >
+            <input type="text" id="title" placeholder="Название задачи" >
         </div>
 
         <div>

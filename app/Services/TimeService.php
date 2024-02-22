@@ -11,6 +11,13 @@ class TimeService
 {
     public static function getDurationString($seconds)
     {
-        return CarbonInterval::seconds($seconds)->cascade()->forHumans();
+
+        if(!$seconds) {
+            $output = '0 секунд';
+        }
+        else {
+            $output = CarbonInterval::seconds($seconds)->cascade()->forHumans();
+        }
+        return $output;
     }
 }
