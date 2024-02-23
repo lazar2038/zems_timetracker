@@ -8,10 +8,10 @@ export default function useProjects() {
 
     const router = useRouter()
 
-    const getProjects = async() => {
-        axios.get('/api/projects')
+    const getProjects = async(page = 1) => {
+        axios.get('/api/projects?page=' + page)
             .then(response => {
-                projects.value = response.data.data;
+                projects.value = response.data;
             })
             .catch(error => console.log(error))
     }

@@ -12,7 +12,13 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('project', 'timelines.user', 'user')->orderBy('id', 'desc')->get();
+        $tasks = Task::with('project', 'timelines.user', 'user')->whereHas('project')->orderBy('id', 'desc')->paginate(10);
+        return TaskResource::collection($tasks);
+    }
+
+    public function indexWithoutProject()
+    {
+        $tasks = Task::with('timelines.user', 'user')->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
         return TaskResource::collection($tasks);
     }
 

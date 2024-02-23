@@ -8,12 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { TailwindPagination } from 'laravel-vue-pagination';
+
 
 library.add(faPlus, faPen, faTrash)
 
 const app = createApp(App)
 
 app.component('font-awesome-icon', FontAwesomeIcon)
+app.component('Pagination', TailwindPagination)
 app.use(router)
 
 

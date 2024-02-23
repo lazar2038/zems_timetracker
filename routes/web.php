@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function() {
-    $timeline = \App\Models\Timeline::find(1);
-    return $timeline->user;
+    $tasks = Task::with('timelines.user', 'user')->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
+    return $tasks;
 });
 
 Route::view('/{any?}', 'any')

@@ -1,7 +1,7 @@
 <template>
 
     <ul>
-        <li v-for="project in projects" class="mb-3 border-b-2 pb-4">
+        <li v-for="project in projects.data" class="mb-3 border-b-2 pb-4">
             <div>
                <router-link :to=" { name : 'projects.show', params : { id : project.id } } ">
                    Проект #{{ project.id }} <span class="font-bold">{{ project.title }}</span>
@@ -15,6 +15,12 @@
             </ul>
         </li>
     </ul>
+
+    <Pagination
+        :data="projects"
+        :limit="5"
+        @pagination-change-page="getProjects"
+    />
 
 </template>
 

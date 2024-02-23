@@ -17,10 +17,19 @@ class ProjectSeeder extends Seeder
     public function run(): void
     {
 
+        Project::factory(5)->create();//пустые проекты
 
-        Project::factory(2)
+        Task::factory(10)->create();//задачи без проектов
+
+        Task::factory(10)
             ->has(
-                Task::factory(3)
+                Timeline::factory()
+                    ->count(5)
+            )->create();//задачи без проектов, но с таймлайнами
+
+        Project::factory(10)
+            ->has(
+                Task::factory(10)
                     ->has(
                         Timeline::factory()
                             ->count(5)

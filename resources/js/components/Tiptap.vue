@@ -22,6 +22,9 @@ const editor = useEditor({
         attributes: {
             class: 'border border-gray-400 py-2 px-3 min-h-[200px]'
         }
+    },
+    onUpdate: ({ editor }) => {
+        emit('update:modelValue', editor.getHTML())
     }
 })
 

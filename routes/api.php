@@ -20,6 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('projects', \App\Http\Controllers\Api\ProjectController::class);
+Route::get('tasks/without_project', [\App\Http\Controllers\Api\TaskController::class, 'indexWithoutProject']);
 Route::apiResource('tasks', \App\Http\Controllers\Api\TaskController::class);
+
 Route::apiResource('timelines', \App\Http\Controllers\Api\TimelineController::class);
 

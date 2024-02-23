@@ -13,7 +13,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('tasks', 'user', 'timelines')->orderBy('id', 'desc')->get();
+        $projects = Project::with('tasks', 'user', 'timelines')->orderBy('id', 'desc')->paginate(10);
         return ProjectResource::collection($projects);
     }
 

@@ -30,11 +30,6 @@
             <tiptap v-model="task.description" id="description" name="description"></tiptap>
         </div>
 
-
-        <input type="text" v-model="task.description">
-
-
-
         <div>
 
             <input type="submit" class="button green" value="Создать" >
