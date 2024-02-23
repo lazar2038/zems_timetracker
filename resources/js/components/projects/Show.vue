@@ -8,9 +8,7 @@
 
 
 
-
-
-    <div v-if="project.tasks.length == 0">Задач по проекту нет</div>
+    <div v-if="project.tasksQuantity === 0">Задач по проекту нет</div>
 
     <ul v-else class="ml-3">
         <li v-for="task in project.tasks" class="my-3 border-l-2 border-green-500 pl-2">Задача: <span class="font-italic">{{ task.title }}</span>

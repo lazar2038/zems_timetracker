@@ -18,6 +18,9 @@ class ProjectResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'tasks' => TaskResource::collection($this->whenLoaded('tasks')),
+            'tasksQuantity' => $this->whenLoaded('tasks', function() {
+                return $this->tasks->count();
+            }),
             'durationString' => $this->durationString,
             'durationInSeconds' => $this->durationInSeconds,
         ];

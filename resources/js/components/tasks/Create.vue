@@ -24,14 +24,14 @@
             <input v-model="task.title" type="text" name="title" id="title" placeholder="Название задачи" >
         </div>
 
+
         <div class="my-3">
             <div>Описание:</div>
-            <tiptap v-model="task.description" id="description" name="description">
-
-            </tiptap>
-
-
+            <tiptap v-model="task.description" id="description" name="description"></tiptap>
         </div>
+
+
+        <input type="text" v-model="task.description">
 
 
 

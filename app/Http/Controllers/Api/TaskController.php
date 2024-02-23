@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('project', 'timelines.user', 'user')->get();
+        $tasks = Task::with('project', 'timelines.user', 'user')->orderBy('id', 'desc')->get();
         return TaskResource::collection($tasks);
     }
 
