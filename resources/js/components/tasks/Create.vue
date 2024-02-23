@@ -7,13 +7,15 @@
 
             <div><label for="project_id">Проект:</label></div>
 
-            <select v-if="route.query.project" v-model="task.project" name="project_id" id="project_id">
+            <select v-if="route.query.project" v-model="task.project_id" name="project_id" id="project_id">
                 <option :value="project.id" selected>{{ project.title }}</option>
             </select>
 
+
+
             <select v-else v-model="task.project_id" name="project_id" id="project_id">
                 <option value="null" hidden>Выберите проект</option>
-                <option v-for="project in projects" :value="project.id">{{ project.title }}</option>
+                <option v-for="project in projects.data" :value="project.id">{{ project.title }}</option>
             </select>
         </div>
 
@@ -72,7 +74,7 @@ else {
 const task = reactive({
     title: '',
     description: '',
-    project: route.query.project ?? null
+    project_id: route.query.project ?? null
 })
 
 
