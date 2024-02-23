@@ -35,7 +35,7 @@
 
         <div>
 
-            <input type="submit" class="button green" value="Создать" >
+            <input type="submit" class="button green" value="Изменить" >
 
         </div>
 

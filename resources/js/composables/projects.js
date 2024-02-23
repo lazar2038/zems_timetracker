@@ -32,6 +32,28 @@ export default function useProjects() {
             .catch(error => console.log(error))
     }
 
+
+
+    const updateProject = async(project) => {
+        axios.put('/api/projects/' + project.id, project)
+            .then(response => {
+                router.push({ name: 'projects.index'})
+            })
+            .catch(error => console.log(error))
+    }
+
+    const deleteProject = async(project) => {
+        axios.delete('/api/projects/' + project.id, {
+            data: {
+                confirmation: project.confirmation
+            }
+        })
+            .then(response => {
+                router.push({ name: 'projects.index'})
+            })
+            .catch(error => console.log(error))
+    }
+
     const actionButtons = {
         'addButton':
             {
@@ -54,6 +76,6 @@ export default function useProjects() {
     }
 
 
-    return { projects, project, getProjects, getProject, storeProject, actionButtons }
+    return { projects, project, getProjects, getProject, storeProject, deleteProject, updateProject, actionButtons }
 
 }

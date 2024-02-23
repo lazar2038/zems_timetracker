@@ -1,20 +1,37 @@
 <template>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="updateProject(project)">
 
-        <div>
-            <input type="text" id="title" placeholder="Название проекта" >
+
+        <div class="my-3">
+            <div><label for="title">Название проекта:</label></div>
+
+            <input v-model="project.title" type="text" name="title" id="title" placeholder="Название проекта" >
         </div>
 
+
         <div>
-            <input type="submit" class="block text-white button font-bold py-2 my-2 px-4 rounded bg-green-600 cursor-pointer hover:bg-green-800 transition-all" value="Изменить" >
+
+            <input type="submit" class="button green" value="Изменить" >
+
         </div>
+
 
     </form>
 </template>
 
 <script setup>
-    let name = "Create"
-    function submit() {
-            console.log('Submitted')
-    }
+import { reactive } from "vue";
+
+import useProjects from "../../composables/projects.js";
+
+import { useRouter} from "vue-router";
+import { useRoute } from "vue-router";
+
+const route = useRoute()
+const router = useRouter()
+
+const { project, getProject, updateProject } = useProjects();
+
+getProject(route.params.id)
+
 </script>
