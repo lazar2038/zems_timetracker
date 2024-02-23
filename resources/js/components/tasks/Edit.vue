@@ -31,6 +31,7 @@
             <tiptap v-model="task.description" id="description" name="description"></tiptap>
         </div>
 
+
         <div>
 
             <input type="submit" class="button green" value="Создать" >
@@ -63,6 +64,5 @@ const { task, getTask, updateTask } = useTasks();
 
 getProjects()
 getTask(route.params.id)
-
 
 </script>
