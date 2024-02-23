@@ -17,8 +17,17 @@ import TasksEdit from "../components/tasks/Edit.vue"
 import TimelinesIndex from "../components/timelines/Index.vue"
 import TimelinesCreate from "../components/timelines/Create.vue"
 
-
+import { ref } from "vue";
 import { createRouter, createWebHistory } from 'vue-router'
+import NotFound from "../components/NotFound.vue";
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+    currentPath.value = window.location.hash
+})
+
+
 
 
 const routes = [
@@ -29,6 +38,18 @@ const routes = [
             title : 'Главная',
         },
         component: DashboardIndex
+    },
+
+    {
+        path: '/404',
+        name: 'NotFound',
+        meta: {
+            title: 'Страница не существует'
+        },
+        component: NotFound
+    },
+    {
+        path: '/:catchAll(.*)', redirect:'404'
     },
 
     {

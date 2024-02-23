@@ -24,6 +24,7 @@ class TaskResource extends JsonResource
             'durationString' => $this->durationString,
             'durationInSeconds' => $this->durationInSeconds,
             'timelines' => TimelineResource::collection($this->whenLoaded('timelines')),
+            'active' => $this->active
 
         ];
     }

@@ -16,12 +16,19 @@ export default function useProjects() {
             .catch(error => console.log(error))
     }
 
-    const getProject = async(id) => {
+    const getProject = async (id) => {
         axios.get('/api/projects/' + id)
             .then(response => {
                 project.value = response.data.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    } else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const storeProject = async(project) => {

@@ -8,10 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-regular-svg-icons";
+
 import { TailwindPagination } from 'laravel-vue-pagination';
 
 
-library.add(faPlus, faPen, faTrash)
+library.add( faPlus, faPen, faTrash, faXmark, faClock )
 
 const app = createApp(App)
 

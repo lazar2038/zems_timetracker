@@ -24,7 +24,12 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
-        $task->load('project');
+
+        if(!$task) {
+            return response()->json(['error' => 'Такой страницы не существует'], 404);
+        }
+
+        $task->load('project', 'timelines');
         return new TaskResource($task);
     }
 
@@ -41,6 +46,11 @@ class TaskController extends Controller
 
     public function update(Task $task, StoreTaskRequest  $request)
     {
+
+        if(!$task) {
+            return response()->json(['error' => 'Такой страницы не существует'], 404);
+        }
+
         $task->update($request->validated());
         return new TaskResource($task);
     }

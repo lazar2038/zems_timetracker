@@ -39,4 +39,17 @@ class Task extends Model
         return TaskService::getDurationInSeconds($this);
     }
 
+    public function getActiveAttribute()
+    {
+        $timelines = $this->timelines;
+        // Проверить каждый timeline на наличие timestamp_end равного null
+        foreach ($timelines as $timeline) {
+            if ($timeline->timestamp_end === null) {
+                return TRUE; // Если найден хотя бы один активный timeline, вернуть true
+            }
+        }
+
+        return FALSE; // Если не найдено активных timelines, вернуть false
+    }
+
 }

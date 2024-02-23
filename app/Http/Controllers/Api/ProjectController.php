@@ -20,6 +20,10 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
+        if(!$project) {
+            return response()->json(['error' => 'Такой страницы не существует'], 404);
+        }
+
         $project->load('tasks');
         return new ProjectResource($project);
     }
@@ -36,6 +40,11 @@ class ProjectController extends Controller
 
     public function update(Project $project, StoreProjectRequest  $request)
     {
+
+        if(!$project) {
+            return response()->json(['error' => 'Такой страницы не существует'], 404);
+        }
+
         $project->update($request->validated());
         return new ProjectResource($project);
     }
