@@ -21,13 +21,13 @@ class ProjectSeeder extends Seeder
 
         Task::factory(10)->create();//задачи без проектов
 
-        Task::factory(10)
+        Task::factory(5)
             ->has(
                 Timeline::factory()
                     ->count(5)
             )->create();//задачи без проектов, но с таймлайнами
 
-        Project::factory(10)
+        Project::factory(20)
             ->has(
                 Task::factory(10)
                     ->has(

@@ -9,7 +9,7 @@ export default function useTasks() {
     const router = useRouter()
 
     const getTasks = async(page= 1) => {
-        axios.get('/api/tasks?page' + page)
+        axios.get('/api/tasks?page=' + page)
             .then(response => {
                 tasks.value = response.data;
             })
@@ -17,8 +17,9 @@ export default function useTasks() {
     }
 
     const getTasksWithoutProject = async(page= 1) => {
-        axios.get('/api/tasks/without_project?page' + page)
+        axios.get('/api/tasks/without_project?page=' + page)
             .then(response => {
+
                 tasksWithoutProject.value = response.data;
             })
             .catch(error => console.log(error))

@@ -25,7 +25,6 @@
             :data="tasksWithoutProject"
             :limit="5"
             @pagination-change-page="getTasksWithoutProject"
-            class="relative block items-center px-2 py-2 text-sm font-medium border rounded-l-md focus:z-20 disabled:opacity-50"
         />
 
 
@@ -64,7 +63,6 @@
             :data="tasks"
             :limit="5"
             @pagination-change-page="getTasks"
-            class="relative block items-center px-2 py-2 text-sm font-medium border rounded-l-md focus:z-20 disabled:opacity-50"
         />
 
     </section>
