@@ -5,7 +5,7 @@
 
         <div class="my-3">
 
-            <div><label for="project_id">Проект:</label></div>
+            <div><label for="project_id">Выберите проект:</label></div>
 
             <select v-if="route.query.project" v-model="task.project_id" name="project_id" id="project_id">
                 <option :value="project.id" selected>{{ project.title }}</option>
@@ -14,11 +14,18 @@
 
 
             <select v-else v-model="task.project_id" name="project_id" id="project_id">
-                <option value="null" hidden>Выберите проект</option>
-                <option v-for="project in projects.data" :value="project.id">{{ project.title }}</option>
+                <option value="0" hidden>Без проекта</option>
+
+                <option v-for="project in projects.data" :value="project.id">#{{ project.id }} {{ project.title }}</option>
             </select>
         </div>
 
+        <Pagination
+            :data="projects"
+            :limit="5"
+            @pagination-change-page="getProjects"
+        >
+        </Pagination>
 
         <div class="my-3">
             <div><label for="title">Название задачи:</label></div>
@@ -74,7 +81,7 @@ else {
 const task = reactive({
     title: '',
     description: '',
-    project_id: route.query.project ?? null
+    project_id: route.query.project ?? '0'
 })
 
 

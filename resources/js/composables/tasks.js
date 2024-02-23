@@ -4,6 +4,8 @@ import {useRouter} from "vue-router";
 export default function useTasks() {
 
     const tasks = ref({})
+    const task = ref({})
+
     const tasksWithoutProject = ref({})
 
     const router = useRouter()
@@ -25,15 +27,33 @@ export default function useTasks() {
             .catch(error => console.log(error))
     }
 
+
+    const getTask = async(id) => {
+        axios.get('/api/tasks/' + id)
+            .then(response => {
+                task.value = response.data.data;
+            })
+            .catch(error => console.log(error))
+    }
+
     const storeTask = async(task) => {
         axios.post('/api/tasks', task)
             .then(response => {
-                console.log(response)
                 router.push({ name: 'tasks.index'})
             })
             .catch(error => console.log(error))
     }
 
-    return { tasks, tasksWithoutProject, getTasks, getTasksWithoutProject, storeTask }
+    const updateTask = async(task) => {
+        axios.put('/api/tasks/' + task.id, task)
+            .then(response => {
+                router.push({ name: 'tasks.index'})
+            })
+            .catch(error => console.log(error))
+    }
+
+
+
+    return { task, tasks, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, storeTask, updateTask }
 
 }

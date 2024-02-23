@@ -24,14 +24,27 @@ class TaskController extends Controller
 
     public function show(Task $task)
     {
-        $task->load('tasks');
+        $task->load('project');
         return new TaskResource($task);
     }
 
-    public function store(StoreTaskRequest  $request)
+
+
+
+    public function store(StoreTaskRequest $request)
     {
         $task = new Task($request->validated());
         $task->save();
         return new TaskResource($task);
     }
+
+
+    public function update(Task $task, StoreTaskRequest  $request)
+    {
+        $task = $task->update($request->validated());
+        $task->save();
+        return new TaskResource($task);
+    }
+
+
 }

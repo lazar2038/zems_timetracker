@@ -136,7 +136,7 @@ const routes = [
         path : '/tasks/:id',
         name : 'tasks.show',
         meta : {
-            title : 'Страница задание',
+            title : 'Страница задачи',
             actionButtons : {
                 edit : {
                     route : 'tasks.edit',

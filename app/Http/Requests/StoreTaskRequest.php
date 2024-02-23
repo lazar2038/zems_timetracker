@@ -27,4 +27,14 @@ class StoreTaskRequest extends FormRequest
             'project_id' => ['integer', 'nullable']
         ];
     }
+
+
+    protected function prepareForValidation()
+    {
+        if($this->project_id == 0) {
+            $this->merge(['project_id' => NULL]);
+        }
+    }
+
+
 }
