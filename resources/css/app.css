@@ -24,7 +24,7 @@ header .button, footer .button {
 
 
 main .button {
-    @apply inline-block text-white  font-bold py-1 my-1 px-4 rounded text-sm;
+    @apply inline-block text-white  font-bold py-1 my-1 px-4 rounded text-sm cursor-pointer;
 }
 
 
@@ -86,3 +86,5 @@ main a {
         transform: rotate(360deg);
     }
 }
+
+

@@ -7,6 +7,7 @@ export default function useTasks() {
     const task = ref({})
 
     const tasksWithoutProject = ref({})
+    const taskTimelines = ref({})
 
     const router = useRouter()
 
@@ -73,6 +74,17 @@ export default function useTasks() {
 
 
 
-    return { task, tasks, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, storeTask, updateTask, deleteTask }
+
+
+
+    const getTaskTimelines = async(task_id) => {
+        axios.get('/api/tasks/' + task_id + '/timelines')
+            .then(response => {
+                taskTimelines.value = response.data;
+            })
+            .catch(error => console.log(error))
+    }
+
+    return { task, tasks, taskTimelines, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, getTaskTimelines, storeTask, updateTask, deleteTask }
 
 }

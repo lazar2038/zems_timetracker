@@ -20,7 +20,8 @@
 
 
     <ul class="">
-        <li v-for="timeline in task.timelines">
+        <li v-if="!task.active"> <Trigger :task_id="task.id" text="Запустить" @triggered="triggerTriggered"></Trigger></li>
+        <li v-for="timeline in taskTimelines.data">
 
             <span>
                 <span v-if="timeline.active">
@@ -32,12 +33,12 @@
             </span>
             <span class="my-3 border-l-2 border-green-500 pl-2 ml-2">
 
-                    Начало: {{ timeline.date_start }} {{ timeline.time_start }},
+                    Начало: {{ timeline.date_start }} {{ timeline.time_start }}
                 <span v-if="timeline.timestamp_end">
-                    Окончание: {{ timeline.date_end }} {{ timeline.time_end }}
+                    , Окончание: {{ timeline.date_end }} {{ timeline.time_end }}
                 </span>
                 <span v-else>
-                    <span class="button green">Закончить</span>
+                    <Trigger :task_id="task.id" text="Закончить" @triggered="triggerTriggered"></Trigger>
                 </span>
             </span>
 
@@ -53,11 +54,18 @@
     import { useRouter} from "vue-router";
     import { useRoute } from "vue-router";
     import useTasks from "../../composables/tasks.js";
+    import Trigger from "../Trigger.vue";
     const route = useRoute()
     const router = useRouter()
 
-    const { task, getTask } = useTasks()
+    const triggerTriggered = () => {
+       getTaskTimelines(route.params.id);
+       getTask(route.params.id)
+    };
+
+    const { task, taskTimelines, getTask, getTaskTimelines  } = useTasks()
 
     getTask(route.params.id)
+    getTaskTimelines(route.params.id)
 
 </script>
