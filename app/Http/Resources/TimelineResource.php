@@ -24,6 +24,7 @@ class TimelineResource extends JsonResource
             'date_end' => $this->date_end,
             'time_start' => $this->time_start,
             'time_end' => $this->time_end,
+            'active' => $this->active
 
         ];
     }

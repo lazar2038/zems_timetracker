@@ -11,6 +11,8 @@ class Timeline extends Model
     use \Znck\Eloquent\Traits\BelongsToThrough;
 
 
+
+
     protected $guarded = [];
 
     public function task()
@@ -26,6 +28,16 @@ class Timeline extends Model
     public function user()
     {
         return $this->belongsToThrough(User::class, [Project::class, Task::class]);
+    }
+
+    public function getActiveAttribute()
+    {
+
+        if ($this->timestamp_end === null) {
+            return TRUE; // Если найден хотя бы один активный timeline, вернуть true
+        }
+
+        return FALSE; // Если не найдено активных timelines, вернуть false
     }
 
 }

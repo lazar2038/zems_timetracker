@@ -19,7 +19,7 @@ class Task extends Model
 
     public function timelines()
     {
-        return $this->hasMany(Timeline::class);
+        return $this->hasMany(Timeline::class)->orderBy('timestamp_start', 'desc');
     }
 
     public function project()

@@ -18,9 +18,31 @@
     <div class="my-4">Описание: <div v-html="task.description"></div></div>
 
 
-    <ul class="ml-2">
+
+    <ul class="">
         <li v-for="timeline in task.timelines">
-            Начало: {{ timeline.date_start }} {{ timeline.time_start }}, Окончание: {{ timeline.date_end }} {{ timeline.time_end }}
+
+            <span>
+                <span v-if="timeline.active">
+                        <font-awesome-icon :icon="['far', 'clock']" class="rotate-icon" />
+                </span>
+                   <span v-if="!timeline.active">
+                        <font-awesome-icon :icon="['far', 'clock']" class="text-gray-300" />
+                </span>
+            </span>
+            <span class="my-3 border-l-2 border-green-500 pl-2 ml-2">
+
+                    Начало: {{ timeline.date_start }} {{ timeline.time_start }},
+                <span v-if="timeline.timestamp_end">
+                    Окончание: {{ timeline.date_end }} {{ timeline.time_end }}
+                </span>
+                <span v-else>
+                    <span class="button green">Закончить</span>
+                </span>
+            </span>
+
+
+
         </li>
     </ul>
 

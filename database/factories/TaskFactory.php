@@ -21,7 +21,6 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->text(36),
             'description' => $this->faker->text(300),
-
         ];
     }
 }
