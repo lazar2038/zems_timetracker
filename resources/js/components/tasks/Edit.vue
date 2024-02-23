@@ -7,6 +7,7 @@
             <div><label for="project_id">Выберите проект:</label></div>
 
             <select v-model="task.project_id" name="project_id" id="project_id">
+                <option value="0">Без проекта</option>
                 <option v-for="project in projects.data" :value="project.id">#{{ project.id }} {{ project.title }}</option>
             </select>
 

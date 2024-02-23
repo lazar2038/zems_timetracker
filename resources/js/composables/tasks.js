@@ -45,6 +45,7 @@ export default function useTasks() {
     }
 
     const updateTask = async(task) => {
+        console.log(task)
         axios.put('/api/tasks/' + task.id, task)
             .then(response => {
                 router.push({ name: 'tasks.index'})
