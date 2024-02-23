@@ -45,5 +45,17 @@ class TaskController extends Controller
         return new TaskResource($task);
     }
 
+    public function destroy(Request $request, Task $task)
+    {
+
+        if ($request->input('confirmation') == 'DELETE') {
+            $task->timelines()->delete();
+            $task->delete();
+            return response()->noContent();
+        }
+        else {
+            return response()->json(['error' => 'Неверное подтверждение для удаления задачи'], 400);
+        }
+    }
 
 }

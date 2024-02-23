@@ -45,8 +45,19 @@ export default function useTasks() {
     }
 
     const updateTask = async(task) => {
-        console.log(task)
         axios.put('/api/tasks/' + task.id, task)
+            .then(response => {
+                router.push({ name: 'tasks.index'})
+            })
+            .catch(error => console.log(error))
+    }
+
+    const deleteTask = async(task) => {
+        axios.delete('/api/tasks/' + task.id, {
+            data: {
+                confirmation: task.confirmation
+            }
+        })
             .then(response => {
                 router.push({ name: 'tasks.index'})
             })
@@ -55,6 +66,6 @@ export default function useTasks() {
 
 
 
-    return { task, tasks, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, storeTask, updateTask }
+    return { task, tasks, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, storeTask, updateTask, deleteTask }
 
 }

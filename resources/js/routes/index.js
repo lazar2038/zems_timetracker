@@ -152,7 +152,7 @@ const routes = [
                         'button red',
                     icon:
                         ['fas', 'trash'],
-                    text: 'Удалить проект'
+                    text: 'Удалить задачу'
                 }
             },
         },
