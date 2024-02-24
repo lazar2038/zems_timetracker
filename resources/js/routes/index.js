@@ -2,6 +2,16 @@ import Authenticated from "../layouts/Authenticated.vue";
 import Guest from "../layouts/Guest.vue";
 import Login from "../components/Login.vue";
 
+function auth(to, from, next) {
+    if(JSON.parse(localStorage.getItem('loggedIn'))) {
+        next()
+    }
+    else {
+        location.assign('/login')
+
+    }
+}
+
 import DashboardIndex from "../components/dashboard/Index.vue"
 
 import ProjectsIndex from "../components/projects/Index.vue"
@@ -37,6 +47,7 @@ window.addEventListener('hashchange', () => {
 const routes = [
     {
         component : Authenticated,
+        beforeEnter : auth,
         children : [
             {
                 path : '/',
@@ -230,7 +241,10 @@ const routes = [
             {
                 path : '/login',
                 name : 'login',
-                component: Login
+                component: Login,
+                'meta' : {
+                    'title' : 'Вход в панель управления'
+                }
             },
         ]
     }

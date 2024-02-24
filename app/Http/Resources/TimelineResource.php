@@ -17,7 +17,7 @@ class TimelineResource extends JsonResource
         return [
             'id' => $this->id,
             'task' => $this->whenLoaded('task'),
-            'project' => $this->whenLoaded('project'),
+            'project' => new ProjectResource($this->whenLoaded('project')),
             'timestamp_start' => $this->timestamp_start,
             'timestamp_end' => $this->timestamp_end,
             'date_start' => $this->date_start,

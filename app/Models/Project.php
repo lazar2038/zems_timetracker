@@ -24,13 +24,13 @@ class Project extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Task::class);
+        return $this->hasMany(Task::class)->orderBy('id', 'desc');
     }
 
 
     public function timelines()
     {
-        return $this->hasManyThrough(Timeline::class, Task::class);
+        return $this->hasManyThrough(Timeline::class, Task::class)->orderBy('timestamp_start', 'desc');
     }
 
     public function getDurationInSecondsAttribute()

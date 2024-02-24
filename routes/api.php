@@ -14,17 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+Route::group(['middleware' => 'auth:sanctum'], function() {
+
+    Route::apiResource('projects', \App\Http\Controllers\Api\ProjectController::class);
+    Route::get('tasks/without_project', [\App\Http\Controllers\Api\TaskController::class, 'indexWithoutProject']);
+    Route::get('tasks/{id}/trigger', [\App\Http\Controllers\Api\TaskController::class, 'trigger']);
+    Route::get('tasks/{id}/timelines', [\App\Http\Controllers\Api\TaskController::class, 'timelines']);
+    Route::apiResource('tasks', \App\Http\Controllers\Api\TaskController::class);
+    Route::apiResource('timelines', \App\Http\Controllers\Api\TimelineController::class);
+
 });
 
 
-Route::apiResource('projects', \App\Http\Controllers\Api\ProjectController::class);
-Route::get('tasks/without_project', [\App\Http\Controllers\Api\TaskController::class, 'indexWithoutProject']);
-Route::get('tasks/{id}/trigger', [\App\Http\Controllers\Api\TaskController::class, 'trigger']);
-Route::get('tasks/{id}/timelines', [\App\Http\Controllers\Api\TaskController::class, 'timelines']);
 
-Route::apiResource('tasks', \App\Http\Controllers\Api\TaskController::class);
-
-Route::apiResource('timelines', \App\Http\Controllers\Api\TimelineController::class);
 
