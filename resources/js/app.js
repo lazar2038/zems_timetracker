@@ -1,6 +1,5 @@
 import './bootstrap';
 import { createApp } from 'vue'
-import App from './layouts/App.vue'
 import router from './routes/index.js'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -16,7 +15,7 @@ import { TailwindPagination } from 'laravel-vue-pagination';
 
 library.add( faPlus, faPen, faTrash, faXmark, faClock )
 
-const app = createApp(App)
+const app = createApp({})
 
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.component('Pagination', TailwindPagination)
