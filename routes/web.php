@@ -20,6 +20,7 @@ Route::get('/test', function() {
 });
 
 Route::post('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store'])->name('login');
+Route::get('logout', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 Route::view('/{any?}', 'any')
     ->name('any')

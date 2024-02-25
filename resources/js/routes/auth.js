@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue";
+import {ref, reactive, onMounted} from "vue";
 import { useRouter } from 'vue-router'
 
 export default function useAuth(){
@@ -6,6 +6,11 @@ export default function useAuth(){
     const router = useRouter()
     const processing = ref(false)
     const validationErrors = ref({})
+
+    const user = ref({
+        name: '',
+        email: ''
+    })
 
     const loginForm = reactive({
         email: '',
@@ -19,8 +24,8 @@ export default function useAuth(){
 
         processing.value = true;
         validationErrors.value = {};
-
-        axios.post('/login', loginForm)
+        await getToken()
+        await axios.post('/login', loginForm)
             .then(async response => {
 
                 loginUser(response)
@@ -35,12 +40,40 @@ export default function useAuth(){
 
 
     const loginUser = (response) => {
+
         localStorage.setItem('loggedIn', JSON.stringify(true))
         router.push({name: 'main'})
 
     }
 
-    return { loginForm, validationErrors, processing, submitLogin }
+
+
+
+
+    const getUser = async () => {
+        axios.get('/api/user').then(
+            response => {
+               user.value = response.data;
+            }
+        )
+    }
+
+    const getToken = async () => {
+        await axios.get('/sanctum/csrf-cookie')
+    }
+
+
+    const logOut = async () => {
+        await axios.get('/logout').
+        then(
+            response => {
+                getUser()
+                router.replace('/')
+            })
+    }
+
+
+    return { loginForm, validationErrors, processing, user, submitLogin, getUser, logOut }
 }
 
 

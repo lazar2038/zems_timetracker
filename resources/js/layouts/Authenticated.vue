@@ -2,7 +2,7 @@
 
     <div class="min-h-screen bg-gray-100 w-full">
     <div class="max-w-4xl mx-auto bg-white">
-
+        <header>
         <div class="w-100 flex bg-white border-b border-gray-100 px-4 items-center">
             <div class="logo text-black-500" ></div>
             <nav class="">
@@ -52,16 +52,24 @@
 
             </nav>
 
+
+
             <div class="grow text-right">
+
+                <Logout></Logout>
                 AUTHED by {{ user.name }}
+
             </div>
+
+
+
 
 
         </div>
 
 
-        <!-- Page Heading -->
-        <header class="shadow">
+
+        <div class="shadow">
             <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8 overflow-hidden">
 
             <Breadcrumbs :route="route"></Breadcrumbs>
@@ -77,6 +85,8 @@
 
                 </h1>
             </div>
+        </div>
+
         </header>
 
         <!-- Page Content -->
@@ -107,17 +117,18 @@ import CreateButton from "../components/action_buttons/CreateButton.vue";
 import EditButton from "../components/action_buttons/EditButton.vue";
 import DeleteButton from "../components/action_buttons/DeleteButton.vue";
 import Breadcrumbs from "../components/Breadcrumbs.vue";
+import Logout from "../components/Logout.vue";
 
 import breadcrumbs from "../routes/breadcrumbs.js";
 
 const route = useRoute()
 
-const user = ref({})
+import useAuth from "../routes/auth.js";
 
-onMounted(async () => {
-    const data = await axios.get('/api/user')
-    user.value = data.data;
-})
+
+const { getUser, user } = useAuth()
+
+getUser()
 
 const currentPagetitle = computed(() => {
     if (route.meta.title) {
