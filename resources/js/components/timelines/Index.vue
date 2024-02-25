@@ -1,7 +1,5 @@
 <template>
 
-    {{ timelines.user }}
-
     <ul>
         <li v-for="timeline in timelines.data" class="my-2 border-l-2 border-green-500 pl-3">
 

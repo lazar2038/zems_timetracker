@@ -13,13 +13,16 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with('project', 'timelines.user', 'user')->whereHas('project')->orderBy('id', 'desc')->paginate(10);
+        $tasks = auth()->user()->tasks()->with(['project', 'timelines.user', 'user'])->whereHas('project')->orderBy('id', 'desc')->paginate(10);
+        //$tasks = Task::with('project', 'timelines.user', 'user')->whereHas('project')->orderBy('id', 'desc')->paginate(10);
         return TaskResource::collection($tasks);
     }
 
     public function indexWithoutProject()
     {
-        $tasks = Task::with('timelines.user', 'user')->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
+        $tasks = auth()->user()->tasks()->with(['project', 'timelines.user', 'user'])->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
+
+        //$tasks = Task::with('timelines.user', 'user')->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
         return TaskResource::collection($tasks);
     }
 
@@ -40,6 +43,7 @@ class TaskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $task = new Task($request->validated());
+        $task->setAttribute('user_id', auth()->id());
         $task->save();
         return new TaskResource($task);
     }

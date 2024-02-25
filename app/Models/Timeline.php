@@ -27,7 +27,7 @@ class Timeline extends Model
 
     public function user()
     {
-        return $this->belongsToThrough(User::class, [Project::class, Task::class]);
+        return $this->belongsToThrough(User::class, Task::class);
     }
 
     public function getActiveAttribute()

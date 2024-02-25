@@ -14,7 +14,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('tasks', 'user', 'timelines')->orderBy('id', 'desc')->paginate(10);
+        $projects = auth()->user()->projects()->with(['tasks'])->orderBy('id', 'desc')->paginate(10);
+        //$projects = Project::with('tasks', 'user', 'timelines')->orderBy('id', 'desc')->paginate(10);
         return ProjectResource::collection($projects);
     }
 

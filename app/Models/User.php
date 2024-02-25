@@ -13,6 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -47,7 +48,7 @@ class User extends Authenticatable
 
     public function tasks()
     {
-        return $this->hasManyThrough(Task::class, Project::class);
+        return $this->hasMany(Task::class);
     }
 
     public function projects() {

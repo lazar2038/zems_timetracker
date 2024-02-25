@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/test', function() {
-    return 1;
+return    auth()->user()->timelines()->orderBy('timestamp_start', 'desc')->paginate(10);
+
+
 });
 
 Route::post('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store'])->name('login');

@@ -27,13 +27,19 @@ class ProjectSeeder extends Seeder
                     ->count(5)
             )->create();//задачи без проектов, но с таймлайнами
 
-        Project::factory(20)
+        Project::factory(5)
             ->has(
                 Task::factory(10)
+                    ->state(function (array $attributes, Project $project) {
+                        $project->load('user');
+                        //\Illuminate\Support\Facades\Log::debug('user id = '.$project->user->id);
+                        return ['user_id' => $project->user->id];
+                    })
                     ->has(
                         Timeline::factory()
                             ->count(5)
                     )
+
             )->create();
     }
 }
