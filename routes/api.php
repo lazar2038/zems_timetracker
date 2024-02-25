@@ -24,7 +24,9 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('tasks/{id}/timelines', [\App\Http\Controllers\Api\TaskController::class, 'timelines']);
     Route::apiResource('tasks', \App\Http\Controllers\Api\TaskController::class);
     Route::apiResource('timelines', \App\Http\Controllers\Api\TimelineController::class);
-
+    Route::get('user', function(Request $request) {
+       return $request->user();
+    });
 });
 
 

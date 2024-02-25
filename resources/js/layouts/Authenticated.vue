@@ -8,14 +8,14 @@
             <nav class="">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex h-16">
-                        <div class="flex">
+                    <div class="flex h-16 items-center">
+                        <div class="flex items-center">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
 
                                 <router-link :to="{ name: 'main' }">
                                     <img src="/images/logo_tracker.svg" width="125px">
-                                </router-link> AUTHED
+                                </router-link>
 
                             </div>
 
@@ -45,11 +45,18 @@
 
 
                     </div>
+
                 </div>
 
                 <!-- Responsive Navigation Menu -->
 
             </nav>
+
+            <div class="grow text-right">
+                AUTHED by {{ user.name }}
+            </div>
+
+
         </div>
 
 
@@ -93,7 +100,7 @@
 
 <script setup>
 
-import { computed } from "vue";
+import { computed, ref,onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 import CreateButton from "../components/action_buttons/CreateButton.vue";
@@ -101,11 +108,16 @@ import EditButton from "../components/action_buttons/EditButton.vue";
 import DeleteButton from "../components/action_buttons/DeleteButton.vue";
 import Breadcrumbs from "../components/Breadcrumbs.vue";
 
-
 import breadcrumbs from "../routes/breadcrumbs.js";
 
 const route = useRoute()
 
+const user = ref({})
+
+onMounted(async () => {
+    const data = await axios.get('/api/user')
+    user.value = data.data;
+})
 
 const currentPagetitle = computed(() => {
     if (route.meta.title) {

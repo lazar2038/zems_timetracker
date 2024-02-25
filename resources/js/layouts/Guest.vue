@@ -15,7 +15,7 @@
 
                                     <router-link :to="{ name: 'main' }">
                                         <img src="/images/logo_tracker.svg" width="125px">
-                                    </router-link> GUEST
+                                    </router-link>
 
                                 </div>
 
@@ -33,6 +33,11 @@
                     <!-- Responsive Navigation Menu -->
 
                 </nav>
+
+                <div class="grow text-right">
+                    GUEST
+                </div>
+
             </div>
 
 
