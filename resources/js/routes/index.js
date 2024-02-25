@@ -3,13 +3,7 @@ import Guest from "../layouts/Guest.vue";
 import Login from "../components/Login.vue";
 
 function auth(to, from, next) {
-    if(JSON.parse(localStorage.getItem('loggedIn'))) {
-        next()
-    }
-    else {
-        location.assign('/login')
-
-    }
+next()
 }
 
 import DashboardIndex from "../components/dashboard/Index.vue"
@@ -47,7 +41,6 @@ window.addEventListener('hashchange', () => {
 const routes = [
     {
         component : Authenticated,
-        beforeEnter : auth,
         children : [
             {
                 path : '/',
@@ -250,14 +243,10 @@ const routes = [
     }
 ];
 
-const breadcrumbs = {
-    'projects.index' : ['main', 'projects.index']
-};
 
 export default createRouter({
     history: createWebHistory(),
-    routes,
-    breadcrumbs
+    routes
 })
 
 

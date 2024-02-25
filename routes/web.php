@@ -19,7 +19,6 @@ Route::get('/test', function() {
     return 1;
 });
 
-
 Route::post('login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store']);
 
 Route::view('/{any?}', 'any')

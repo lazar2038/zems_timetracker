@@ -15,7 +15,7 @@
 
                                 <router-link :to="{ name: 'main' }">
                                     <img src="/images/logo_tracker.svg" width="125px">
-                                </router-link>
+                                </router-link> AUTHED
 
                             </div>
 
@@ -95,8 +95,6 @@
 
 import { computed } from "vue";
 import { useRoute } from "vue-router";
-
-
 
 import CreateButton from "../components/action_buttons/CreateButton.vue";
 import EditButton from "../components/action_buttons/EditButton.vue";

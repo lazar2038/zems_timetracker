@@ -1,0 +1,67 @@
+{
+  "hash": "510a1dd8",
+  "configHash": "77b8ee09",
+  "lockfileHash": "c8262b91",
+  "browserHash": "eb449e94",
+  "optimized": {
+    "vue": {
+      "src": "../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "file": "vue.js",
+      "fileHash": "b641e021",
+      "needsInterop": false
+    },
+    "@fortawesome/fontawesome-svg-core": {
+      "src": "../../node_modules/@fortawesome/fontawesome-svg-core/index.mjs",
+      "file": "@fortawesome_fontawesome-svg-core.js",
+      "fileHash": "6bd0ffb5",
+      "needsInterop": false
+    },
+    "@fortawesome/vue-fontawesome": {
+      "src": "../../node_modules/@fortawesome/vue-fontawesome/index.es.js",
+      "file": "@fortawesome_vue-fontawesome.js",
+      "fileHash": "78ef2844",
+      "needsInterop": false
+    },
+    "@fortawesome/free-solid-svg-icons": {
+      "src": "../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs",
+      "file": "@fortawesome_free-solid-svg-icons.js",
+      "fileHash": "90985162",
+      "needsInterop": false
+    },
+    "@fortawesome/free-regular-svg-icons": {
+      "src": "../../node_modules/@fortawesome/free-regular-svg-icons/index.mjs",
+      "file": "@fortawesome_free-regular-svg-icons.js",
+      "fileHash": "7aaf5e15",
+      "needsInterop": false
+    },
+    "laravel-vue-pagination": {
+      "src": "../../node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.es.js",
+      "file": "laravel-vue-pagination.js",
+      "fileHash": "cae1abbe",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "f24e5efb",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "src": "../../node_modules/vue-router/dist/vue-router.mjs",
+      "file": "vue-router.js",
+      "fileHash": "bd6aba90",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-LYIKDIT3": {
+      "file": "chunk-LYIKDIT3.js"
+    },
+    "chunk-FAZS4CSC": {
+      "file": "chunk-FAZS4CSC.js"
+    },
+    "chunk-CSAU5B4Q": {
+      "file": "chunk-CSAU5B4Q.js"
+    }
+  }
+}

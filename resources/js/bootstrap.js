@@ -5,10 +5,18 @@
  */
 
 import axios from 'axios';
+
+import useDomain from './routes/domain'
+const domain = useDomain()
+
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
+
+
+
+axios.defaults.baseURL = domain;
 
 window.axios.interceptors.response.use(
     response => response,
@@ -16,7 +24,7 @@ window.axios.interceptors.response.use(
 
         if(error.response?.status === 401 || error.response?.status === 419) {
             if (JSON.parse(localStorage.getItem('loggedIn'))) {
-                localStorage.setItem('loggenIn', false)
+                localStorage.setItem('loggedIn', false)
                 location.assign('/login')
             }
         }

@@ -22,7 +22,7 @@ export default function useAuth(){
 
         axios.post('/login', loginForm)
             .then(async response => {
-                console.log(1)
+
                 loginUser(response)
             })
             .catch(error =>{

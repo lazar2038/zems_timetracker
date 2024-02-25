@@ -15,7 +15,7 @@
 
                                     <router-link :to="{ name: 'main' }">
                                         <img src="/images/logo_tracker.svg" width="125px">
-                                    </router-link>
+                                    </router-link> GUEST
 
                                 </div>
 
