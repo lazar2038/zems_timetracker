@@ -37,6 +37,7 @@
 
         </form>
 
+        <div class="my-3"><router-link to="/register">Регистрация</router-link></div>
 
 
     </div>

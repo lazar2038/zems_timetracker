@@ -57,7 +57,7 @@
             <div class="grow text-right">
 
                 <Logout></Logout>
-                AUTHED by {{ user.name }}
+                {{ user.email }}
 
             </div>
 

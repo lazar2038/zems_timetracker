@@ -1,6 +1,7 @@
 import Authenticated from "../layouts/Authenticated.vue";
 import Guest from "../layouts/Guest.vue";
 import Login from "../components/Login.vue";
+import Register from "../components/Register.vue";
 
 function auth(to, from, next) {
     if(JSON.parse(localStorage.getItem('loggedIn'))) {
@@ -245,6 +246,14 @@ const routes = [
                 component: Login,
                 'meta' : {
                     'title' : 'Вход в панель управления'
+                }
+            },
+            {
+                path : '/register',
+                name : 'register',
+                component: Register,
+                'meta' : {
+                    'title' : 'Регистрация пользователя'
                 }
             },
         ]

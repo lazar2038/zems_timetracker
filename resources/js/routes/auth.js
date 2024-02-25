@@ -8,7 +8,6 @@ export default function useAuth(){
     const validationErrors = ref({})
 
     const user = ref({
-        name: '',
         email: ''
     })
 
@@ -17,6 +16,15 @@ export default function useAuth(){
         password: '',
         remember: false
     })
+
+
+    const registerForm = reactive({
+        email: '',
+        password: '',
+        password2: ''
+    })
+
+
 
     const submitLogin = async () => {
 
@@ -36,7 +44,7 @@ export default function useAuth(){
                 }
             })
             .finally(() =>processing.value = false)
-        }
+    }
 
 
     const loginUser = (response) => {
@@ -73,7 +81,28 @@ export default function useAuth(){
     }
 
 
-    return { loginForm, validationErrors, processing, user, submitLogin, getUser, logOut }
+    const submitRegister = async () => {
+
+        if (processing.value) return;
+
+        processing.value = true;
+        validationErrors.value = {};
+        await getToken()
+        await axios.post('/register', registerForm)
+            .then(async response => {
+                loginUser(response)
+            })
+            .catch(error =>{
+                if(error.response?.data) {
+                    validationErrors.value = error.response.data.errors
+                }
+            })
+            .finally(() =>processing.value = false)
+    }
+
+
+
+    return { loginForm, validationErrors, processing, user, submitLogin, getUser, logOut, registerForm, submitRegister }
 }
 
 
