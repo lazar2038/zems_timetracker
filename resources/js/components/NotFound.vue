@@ -1,8 +1,7 @@
 <template>
 
 
-    <font-awesome-icon :icon="['far', 'clock']" class="rotate-icon" />
-
+    Тут ничего нет.
 
 
 </template>

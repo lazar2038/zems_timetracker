@@ -13,7 +13,18 @@ export default function useProjects() {
             .then(response => {
                 projects.value = response.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const getProject = async (id) => {
@@ -24,7 +35,11 @@ export default function useProjects() {
             .catch(error => {
                     if (error.response && error.response.status === 404) {
                         router.push('/404');
-                    } else {
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
                         console.error(error);
                     }
                 }
@@ -36,7 +51,18 @@ export default function useProjects() {
             .then(response => {
                 router.push({ name: 'projects.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
 
@@ -46,7 +72,18 @@ export default function useProjects() {
             .then(response => {
                 router.push({ name: 'projects.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const deleteProject = async(project) => {
@@ -58,7 +95,18 @@ export default function useProjects() {
             .then(response => {
                 router.push({ name: 'projects.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const actionButtons = {

@@ -16,7 +16,18 @@ export default function useTasks() {
             .then(response => {
                 tasks.value = response.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const getTasksWithoutProject = async(page= 1) => {
@@ -25,7 +36,18 @@ export default function useTasks() {
 
                 tasksWithoutProject.value = response.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
 
@@ -37,7 +59,11 @@ export default function useTasks() {
             .catch(error => {
                     if (error.response && error.response.status === 404) {
                         router.push('/404');
-                    } else {
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
                         console.error(error);
                     }
                 }
@@ -49,7 +75,18 @@ export default function useTasks() {
             .then(response => {
                 router.push({ name: 'tasks.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const updateTask = async(task) => {
@@ -57,7 +94,18 @@ export default function useTasks() {
             .then(response => {
                 router.push({ name: 'tasks.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     const deleteTask = async(task) => {
@@ -69,7 +117,18 @@ export default function useTasks() {
             .then(response => {
                 router.push({ name: 'tasks.index'})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
 
@@ -82,7 +141,18 @@ export default function useTasks() {
             .then(response => {
                 taskTimelines.value = response.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     return { task, tasks, taskTimelines, tasksWithoutProject, getTask, getTasks, getTasksWithoutProject, getTaskTimelines, storeTask, updateTask, deleteTask }

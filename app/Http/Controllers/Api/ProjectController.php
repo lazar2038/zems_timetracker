@@ -15,12 +15,13 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects()->with(['tasks'])->orderBy('id', 'desc')->paginate(10);
-        //$projects = Project::with('tasks', 'user', 'timelines')->orderBy('id', 'desc')->paginate(10);
         return ProjectResource::collection($projects);
     }
 
     public function show(Project $project)
     {
+        $this->authorize('view', $project);
+
         if(!$project) {
             return response()->json(['error' => 'Такой страницы не существует'], 404);
         }
@@ -41,6 +42,7 @@ class ProjectController extends Controller
 
     public function update(Project $project, StoreProjectRequest  $request)
     {
+        $this->authorize('update', $project);
 
         if(!$project) {
             return response()->json(['error' => 'Такой страницы не существует'], 404);
@@ -52,6 +54,7 @@ class ProjectController extends Controller
 
     public function destroy(Request $request, Project $project)
     {
+        $this->authorize('delete', $project);
 
         if ($request->input('confirmation') == 'DELETE') {
             $project->tasks()->each(function ($task) {

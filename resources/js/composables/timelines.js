@@ -9,7 +9,18 @@ export default function useTimelines() {
             .then(response => {
                 timelines.value = response.data;
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                    if (error.response && error.response.status === 404) {
+                        router.push('/404');
+                    }
+                    if (error.response && error.response.status === 403) {
+                        router.push('/404');
+                    }
+                    else {
+                        console.error(error);
+                    }
+                }
+            )
     }
 
     return { timelines, getTimelines }

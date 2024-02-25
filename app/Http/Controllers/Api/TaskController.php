@@ -14,20 +14,18 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = auth()->user()->tasks()->with(['project', 'timelines.user', 'user'])->whereHas('project')->orderBy('id', 'desc')->paginate(10);
-        //$tasks = Task::with('project', 'timelines.user', 'user')->whereHas('project')->orderBy('id', 'desc')->paginate(10);
         return TaskResource::collection($tasks);
     }
 
     public function indexWithoutProject()
     {
         $tasks = auth()->user()->tasks()->with(['project', 'timelines.user', 'user'])->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
-
-        //$tasks = Task::with('timelines.user', 'user')->whereDoesntHave('project')->orderBy('id', 'desc')->paginate(10);
         return TaskResource::collection($tasks);
     }
 
     public function show(Task $task)
     {
+        $this->authorize('view', $task);
 
         if(!$task) {
             return response()->json(['error' => 'Такой страницы не существует'], 404);
@@ -51,6 +49,7 @@ class TaskController extends Controller
 
     public function update(Task $task, StoreTaskRequest  $request)
     {
+        $this->authorize('update', $task);
 
         if(!$task) {
             return response()->json(['error' => 'Такой страницы не существует'], 404);
@@ -62,6 +61,8 @@ class TaskController extends Controller
 
     public function destroy(Request $request, Task $task)
     {
+        $this->authorize('delete', $task);
+
 
         if ($request->input('confirmation') == 'DELETE') {
             $task->timelines()->delete();
